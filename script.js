@@ -4,7 +4,7 @@
  let gameover=new Audio("gamewon.mp3");
  let resetaudio=new Audio("reset.mp3")
  let turn ="X";
- let isgameover = false;
+ let isgameover = false;  
 
 //  function to change turn
 const changeTurn = ()=>{
@@ -25,6 +25,7 @@ const checkWin = () =>{
     ]
     wins.forEach(e =>{
         if((boxtext[e[0]].innerText === boxtext[e[1]].innerText)&&(boxtext[e[1]].innerText===boxtext[e[2]].innerText)&&(boxtext[e[0]].innerText !== "")){
+            document.querySelector('.container').style.display="none";
             document.querySelector('.info').innerText= " "+ boxtext[e[0]].innerText + " Won ";
             isgameover=true;
             document.querySelector(".imgbox").getElementsByTagName('img')[0].style.width="300px";
@@ -33,6 +34,7 @@ const checkWin = () =>{
     })
 }
 // Game logic
+resetaudio.play();
 let boxes=document.getElementsByClassName("box");
 Array.from(boxes).forEach(element =>{
     let boxtext=element.querySelector('.boxtext');
@@ -49,14 +51,18 @@ Array.from(boxes).forEach(element =>{
     })
 })
 //add onclick listener to reset button
+// reset.addEventListener('click',()=>{
+//     gameover.pause();
+//     resetaudio.play();
+//     let boxtexts=document.querySelectorAll('.boxtext');
+//     Array.from(boxtexts).forEach(element=>{
+//         document.querySelector('.container').style.display="block";
+//         element.innerText= "";
+//         turn="X";
+//         document.getElementsByClassName("info")[0].innerText="Turn for "+turn;
+//         document.querySelector('.imgbox').getElementsByTagName('img')[0].style.width="0";
+//     });
+// })
 reset.addEventListener('click',()=>{
-    resetaudio.play();
-    let boxtexts=document.querySelectorAll('.boxtext');
-    Array.from(boxtexts).forEach(element=>{
-        element.innerText= "";
-        turn="X";
-        document.getElementsByClassName("info")[0].innerText="Turn for "+turn;
-        gameover.pause();
-        document.querySelector('.imgbox').getElementsByTagName('img')[0].style.width="0";
-    });
+    window.location.reload("Refresh");
 })

@@ -37,6 +37,9 @@ nav ul{
     background-color:rgb(249, 245, 241) ;
 }
 .gameInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 0 30px;
     font-family: 'Baloo Da 2', cursive;
 }
@@ -68,4 +71,10 @@ nav ul{
 .info{
     padding: 10px;
     font-size: 20px;
+}
+@media screen and (max-width: 1000px)
+{
+    .gameContainer{
+        flex-wrap: wrap;
+    }
 }
